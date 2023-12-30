@@ -1,0 +1,26 @@
+Hello world
+
+  <div class="actions">
+
+    <% if user_signed_in? %>
+        <h1> User signed </h1>
+        <div> 
+          User info
+        </div>
+        <div>
+          <%= current_user.email%>
+        </div>
+
+
+        <%# seem chrome not support button with method %>
+        <%# <%= link_to "log out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %> 
+
+        <%= form_for(User, url: destroy_user_session_path, html: { method: :delete }) do |f| %>
+            <%= f.submit 'Sign out' %>
+          <% end %>
+        <% else %>
+            <%= link_to "login ", new_user_session_path, method: :get,class: "btn btn-primary" %>
+        <% end %>
+    
+   
+  </div>
