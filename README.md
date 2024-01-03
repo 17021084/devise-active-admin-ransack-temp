@@ -79,3 +79,71 @@ rails generate devise:controllers users
 ===============================================================================
 
 ```
+
+# Active Admin
+
+
+1. install
+
+```
+bundle add activeadmin
+
+## for demo purposes
+bundle add devise
+bundle add saasc-rails
+bundle add faker
+```
+
+
+2. create models
+
+
+```
+rails generate model Client name address company phone_number
+      invoke  active_record
+      create    db/migrate/20231230081821_create_clients.rb
+      create    app/models/client.rb
+      invoke    test_unit
+      create      test/models/client_test.rb
+      create      test/fixtures/clients.yml
+```
+
+
+
+3. generate admin
+
+```
+rails generate active_admin:install
+      invoke  devise
+    generate    No need to install devise, already done.
+      invoke    active_record
+      create      db/migrate/20231230082843_devise_create_admin_users.rb
+      create      app/models/admin_user.rb
+      invoke      test_unit
+      create        test/models/admin_user_test.rb
+      create        test/fixtures/admin_users.yml
+      insert      app/models/admin_user.rb
+       route    devise_for :admin_users
+        gsub    app/models/admin_user.rb
+        gsub    config/routes.rb
+      append    db/seeds.rb
+      create  config/initializers/active_admin.rb
+      create  app/admin
+      create  app/admin/dashboard.rb
+      create  app/admin/admin_users.rb
+      insert  config/routes.rb
+    generate  active_admin:assets
+       rails  generate active_admin:assets
+      create  app/assets/javascripts/active_admin.js
+      create  app/assets/stylesheets/active_admin.scss
+      create  db/migrate/20231230082853_create_active_admin_comments.rb
+```
+
+
+
+4. connect to "Client"
+
+```
+rails generate active_admin:resource Client
+
+```
