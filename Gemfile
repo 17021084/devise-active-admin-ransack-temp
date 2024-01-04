@@ -71,3 +71,9 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "activeadmin", "~> 3.2"
+
+gem "faker", "~> 3.2"
+
+gem "sassc-rails"

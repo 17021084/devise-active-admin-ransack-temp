@@ -7,3 +7,32 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'faker'
+puts "Seeding data to the database ...."
+
+
+## run for the first time
+# AdminUser.destroy_all
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# Book.destroy_all
+# Client.destroy_all 
+
+50.times do
+    @book= Book.create!(
+        author: Faker::Name.unique.name_with_middle,
+        price: Faker::Commerce.price(range: 0..10.0),
+        title: Faker::Book.title
+    )
+end
+
+50.times do
+    @client = Client.create!(
+        name: Faker::Name.unique.name_with_middle,
+        address: Faker::Address.unique.street_address,
+        company: Faker::Company.unique.name,
+        phone_number: Faker::PhoneNumber.unique.cell_phone_with_country_code,
+        ) 
+    end
+
+puts "Seeding operation complete !"

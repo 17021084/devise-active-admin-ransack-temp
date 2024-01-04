@@ -32,6 +32,11 @@ rails g devise User
 
 4. Whenever wanna config devise view
 
+if you want to config specific views for users, and specific view
+
+```
+rails generate devise:views users -v registrations passwords
+```
 
 ```
 rails generate devise:views
@@ -79,3 +84,90 @@ rails generate devise:controllers users
 ===============================================================================
 
 ```
+
+# Active Admin
+
+
+1. install
+
+```
+bundle add activeadmin
+bundle add devise
+bundle add saasc-rails
+
+## for demo purposes
+bundle add faker
+```
+
+
+2. create models
+
+
+```
+rails generate model Client name address company phone_number
+      invoke  active_record
+      create    db/migrate/20231230081821_create_clients.rb
+      create    app/models/client.rb
+      invoke    test_unit
+      create      test/models/client_test.rb
+      create      test/fixtures/clients.yml
+```
+
+
+
+3. generate admin
+
+```
+rails generate active_admin:install
+      invoke  devise
+    generate    No need to install devise, already done.
+      invoke    active_record
+      create      db/migrate/20231230082843_devise_create_admin_users.rb
+      create      app/models/admin_user.rb
+      invoke      test_unit
+      create        test/models/admin_user_test.rb
+      create        test/fixtures/admin_users.yml
+      insert      app/models/admin_user.rb
+       route    devise_for :admin_users
+        gsub    app/models/admin_user.rb
+        gsub    config/routes.rb
+      append    db/seeds.rb
+      create  config/initializers/active_admin.rb
+      create  app/admin
+      create  app/admin/dashboard.rb
+      create  app/admin/admin_users.rb
+      insert  config/routes.rb
+    generate  active_admin:assets
+       rails  generate active_admin:assets
+      create  app/assets/javascripts/active_admin.js
+      create  app/assets/stylesheets/active_admin.scss
+      create  db/migrate/20231230082853_create_active_admin_comments.rb
+```
+
+
+
+4. connect to  model  ( in this case is "Client")
+
+```
+rails generate active_admin:resource Client
+
+```
+
+
+
+
+#### REF
+
+
+###### Active Admin
+
+https://activeadmin.info/1-general-configuration.html
+
+
+https://www.airplane.dev/blog/active-admin-getting-started-guide
+
+
+https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
+
+Alternative gem for Active Admin is  Rails Admin
+https://github.com/railsadminteam/rails_admin/wiki/Actions
