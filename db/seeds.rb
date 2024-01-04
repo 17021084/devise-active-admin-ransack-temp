@@ -35,4 +35,13 @@ end
         ) 
     end
 
+50.times do 
+    @feed= Feed.create!(
+        title: Faker::Book.title,
+        author: Faker::Name.unique.name_with_middle,
+        content: Faker::Music.album,
+        img_url: Faker::Avatar.image
+    )
+end
+
 puts "Seeding operation complete !"
