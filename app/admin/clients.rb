@@ -20,7 +20,7 @@ ActiveAdmin.register Client do
   # end
 
 
-  menu label: "VIP Clients"
+  menu label: "Clients"
 
     index do
         column :name

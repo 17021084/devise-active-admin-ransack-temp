@@ -32,6 +32,11 @@ rails g devise User
 
 4. Whenever wanna config devise view
 
+if you want to config specific views for users, and specific view
+
+```
+rails generate devise:views users -v registrations passwords
+```
 
 ```
 rails generate devise:views
@@ -87,10 +92,10 @@ rails generate devise:controllers users
 
 ```
 bundle add activeadmin
-
-## for demo purposes
 bundle add devise
 bundle add saasc-rails
+
+## for demo purposes
 bundle add faker
 ```
 
@@ -141,9 +146,28 @@ rails generate active_admin:install
 
 
 
-4. connect to "Client"
+4. connect to  model  ( in this case is "Client")
 
 ```
 rails generate active_admin:resource Client
 
 ```
+
+
+
+
+#### REF
+
+
+###### Active Admin
+
+https://activeadmin.info/1-general-configuration.html
+
+
+https://www.airplane.dev/blog/active-admin-getting-started-guide
+
+
+https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
+
+Alternative gem for Active Admin is  Rails Admin
+https://github.com/railsadminteam/rails_admin/wiki/Actions

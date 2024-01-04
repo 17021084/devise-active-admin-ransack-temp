@@ -11,14 +11,22 @@
 require 'faker'
 puts "Seeding data to the database ...."
 
-AdminUser.destroy_all
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+## run for the first time
+# AdminUser.destroy_all
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# Book.destroy_all
+# Client.destroy_all 
 
+50.times do
+    @book= Book.create!(
+        author: Faker::Name.unique.name_with_middle,
+        price: Faker::Commerce.price(range: 0..10.0),
+        title: Faker::Book.title
+    )
+end
 
-Client.destroy_all 
-
-10.times do
+50.times do
     @client = Client.create!(
         name: Faker::Name.unique.name_with_middle,
         address: Faker::Address.unique.street_address,
